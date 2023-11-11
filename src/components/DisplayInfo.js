@@ -17,7 +17,7 @@ function DisplayInfo({ country, isp, IPaddress, city, region, timezone }) {
       </div>
       <div>
         <p>ISP</p>
-        {isp}
+        <p>{isp}</p>
       </div>
     </div>
   );

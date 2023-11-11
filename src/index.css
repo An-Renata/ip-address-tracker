@@ -7,11 +7,6 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
-/* #map {
-  height: 200px;
-  flex-grow: 1;
-} */
-
 .header-container {
   background-image: url(images/pattern-bg-desktop.png);
   background-repeat: no-repeat;
@@ -81,11 +76,29 @@ input {
 .main-info-container div:first-child {
   border-left: none;
 }
+
 .main-info-container div:last-child {
   border-right: none;
 }
+
 .main-info-container div p {
   color: hsl(0, 0%, 59%);
   text-transform: uppercase;
   font-size: 14px;
+}
+
+/* selects div last p child element */
+.main-info-container div > p:last-child {
+  color: hsl(0, 0%, 17%);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* loader */
+.loader {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
