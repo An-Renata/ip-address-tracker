@@ -111,7 +111,10 @@ function App() {
         setIsLoading(true);
         // Start loading state while fetching data
 
-        const res = await fetch(`http://ip-api.com/json/${searchValue}`);
+        // const res = await fetch(`http://ip-api.com/json/${searchValue}`);
+        const res = await fetch(
+          `https://api.techniknews.net/ipgeo/${searchValue}`
+        );
 
         const data = await res.json();
         console.log(data);
@@ -124,7 +127,7 @@ function App() {
         dispatch({
           type: "renderSearch",
           payload: {
-            ip: data.query,
+            ip: data.ip,
             country: data.country,
             region: data.region,
             city: data.city,
