@@ -10,11 +10,15 @@ function SetViewOnChange({ coords }) {
 function Map({ lat, long }) {
   const coords = [lat, long];
   return (
-    <>
+    <div className="map-container">
       <MapContainer
         center={coords}
         zoom={13}
-        style={{ maxWidth: "1440px", height: "65vh" }}
+        style={{
+          maxWidth: "1440px",
+          height: "60vh",
+          maxHeight: "80vh",
+        }}
         scrollWheelZoom={false}
       >
         <TileLayer
@@ -24,7 +28,7 @@ function Map({ lat, long }) {
         <Marker position={coords}></Marker>
         <SetViewOnChange coords={coords} />
       </MapContainer>
-    </>
+    </div>
   );
 }
 

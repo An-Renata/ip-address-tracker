@@ -1,11 +1,9 @@
 function Header({ children }) {
   return (
-    <div className="header-container">
-      <header>
-        <h1>IP address Tracker</h1>
-        <div>{children}</div>
-      </header>
-    </div>
+    <header className="header-container">
+      <h1>IP address Tracker</h1>
+      <div>{children}</div>
+    </header>
   );
 }
 

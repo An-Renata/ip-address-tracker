@@ -3,7 +3,7 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import DisplayInfo from "./DisplayInfo";
 import Map from "./Map";
-
+import Main from "./Main";
 const initialState = {
   lat: 0,
   long: 0,
@@ -148,27 +148,28 @@ function App() {
   }, [searchValue]);
 
   return (
-    <div>
+    <>
       <Header>
         <SearchBar onSearchValue={handleSearchValue} />
       </Header>
-
-      {isLoading ? (
-        <p className="loader">Loading...</p>
-      ) : (
-        <>
-          <DisplayInfo
-            IPaddress={ip}
-            isp={isp}
-            country={country}
-            region={region}
-            city={city}
-            timezone={timezone}
-          />
-          <Map lat={lat} long={long} />
-        </>
-      )}
-    </div>
+      <Main>
+        {isLoading ? (
+          <p className="loader">Loading...</p>
+        ) : (
+          <>
+            <DisplayInfo
+              IPaddress={ip}
+              isp={isp}
+              country={country}
+              region={region}
+              city={city}
+              timezone={timezone}
+            />
+            <Map lat={lat} long={long} />
+          </>
+        )}
+      </Main>
+    </>
   );
 }
 export default App;
