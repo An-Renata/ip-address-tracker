@@ -1,4 +1,4 @@
-function SearchBar({ onSearchValue }) {
+function SearchBar({ onSearchValue, onSearchValueByClick }) {
   return (
     <div>
       <input

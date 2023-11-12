@@ -4,6 +4,12 @@ import SearchBar from "./SearchBar";
 import DisplayInfo from "./DisplayInfo";
 import Map from "./Map";
 import Main from "./Main";
+
+const ACTIONS = {
+  renderInitial: "renderInitial",
+  renderSearch: "renderSearch",
+};
+
 const initialState = {
   lat: 0,
   long: 0,
@@ -18,7 +24,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     // Initial render depending on the users current location
-    case "renderInitial":
+    case ACTIONS.renderInitial:
       return {
         lat: action.payload.lat,
         long: action.payload.long,
@@ -30,7 +36,7 @@ function reducer(state, action) {
         isp: action.payload.isp,
       };
     // New info is stored depending on the user input
-    case "renderSearch":
+    case ACTIONS.renderSearch:
       return {
         lat: action.payload.lat,
         long: action.payload.long,
@@ -62,6 +68,7 @@ function App() {
       e.target.value = "";
     }
   }
+
   // useEffect function for initial render
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -78,7 +85,7 @@ function App() {
           const data = await res.json();
           // calling dispatch function to set new values to state object
           dispatch({
-            type: "renderInitial",
+            type: ACTIONS.renderInitial,
             payload: {
               ip: data.ip,
               country: data.country,
@@ -125,7 +132,7 @@ function App() {
         }
 
         dispatch({
-          type: "renderSearch",
+          type: ACTIONS.renderSearch,
           payload: {
             ip: data.ip,
             country: data.country,

@@ -16,7 +16,7 @@ function Map({ lat, long }) {
         zoom={13}
         style={{
           maxWidth: "1440px",
-          height: "60vh",
+          height: "70vh",
           maxHeight: "80vh",
         }}
         scrollWheelZoom={false}

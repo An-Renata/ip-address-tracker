@@ -23,13 +23,13 @@
     border-radius: 10px 0 0 10px;
     border: none;
   }
+
   .main-info-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 18rem;
-    padding: 0;
+    width: 15rem;
   }
   .main-info-container div {
     border: none;
@@ -37,7 +37,7 @@
 
   .main-info-container div p {
     text-align: center;
-    font-size: 8px;
+    font-size: 6px;
   }
 }
 
