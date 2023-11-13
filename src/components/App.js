@@ -59,16 +59,6 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSearchValue(e) {
-    if (e.key === "Enter") {
-      // preventDefault
-      e.preventDefault();
-      setSearchValue(e.target.value);
-      // Clear input box after the user presses enter
-      e.target.value = "";
-    }
-  }
-
   // useEffect function for initial render
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -115,22 +105,22 @@ function App() {
 
     async function getNewIPInfo() {
       try {
-        setIsLoading(true);
         // Start loading state while fetching data
+        setIsLoading(true);
 
-        // const res = await fetch(`http://ip-api.com/json/${searchValue}`);
+        // Fetching data depending on the user input
         const res = await fetch(
           `https://api.techniknews.net/ipgeo/${searchValue}`
         );
-
         const data = await res.json();
-        console.log(data);
+
         // if the IP address or domain not found, retun immediately
         if (data.status === "fail") {
           setIsLoading(false);
           return;
         }
 
+        // Update reducer function with the new fetched data
         dispatch({
           type: ACTIONS.renderSearch,
           payload: {
@@ -152,14 +142,15 @@ function App() {
       }
     }
     getNewIPInfo();
-  }, [searchValue]);
+  }, [searchValue]); // useEffect is called on initial render and after searchValue has changed
 
   return (
     <>
       <Header>
-        <SearchBar onSearchValue={handleSearchValue} />
+        <SearchBar setSearchValue={setSearchValue} />
       </Header>
       <Main>
+        {/* Show loader if data still is being fetched */}
         {isLoading ? (
           <p className="loader">Loading...</p>
         ) : (
@@ -172,6 +163,7 @@ function App() {
               city={city}
               timezone={timezone}
             />
+            {/* React leaflet component */}
             <Map lat={lat} long={long} />
           </>
         )}
