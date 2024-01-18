@@ -19,7 +19,7 @@ function SearchBar({ setSearchValue }) {
       <input
         ref={searchBoxRef} // ref to access input value
         type="text"
-        placeholder="Search for any IP address or domain"
+        placeholder="Search for any IP address or domain | e.g. google.com"
         // onKeyDown={onSearchValue}
         onKeyDown={(e) => (e.key === "Enter" ? handleSearchValue() : null)}
       ></input>

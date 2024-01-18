@@ -120,6 +120,11 @@ function App() {
           return;
         }
 
+        if (!data.lat || !data.lon) {
+          setIsLoading(false);
+          return;
+        }
+
         // Update reducer function with the new fetched data
         dispatch({
           type: ACTIONS.renderSearch,
